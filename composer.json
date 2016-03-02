@@ -1,0 +1,17 @@
+{
+    "name": "ueef/phalcon-attachment-storage",
+    "type": "library",
+    "description": "",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Phalcon\\Extended\\Attachment\\": "src/"
+        }
+    }
+}
