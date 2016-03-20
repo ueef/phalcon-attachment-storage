@@ -92,9 +92,14 @@ namespace Phalcon\Extended\Attachment {
             }
 
             $this->assign([
-                'mime' => $this->detectMimeType($path),
+                'mime_type' => $this->detectMimeType($path),
                 'time' => time(),
             ]);
+
+            if (!$this->extension && $this->mime_type) {
+                $this->extension = MimeTypes::getExtension($this->mime_type);
+            }
+
 
             if (!copy($path, $this->getPath())) {
                 throw new File\Exception('Не удалось скопировать файл ' . $path . ' в ' . $this->getPath());
@@ -205,7 +210,7 @@ namespace Phalcon\Extended\Attachment {
 
         public function getExtension()
         {
-            return $this->getExtension();
+            return $this->extension;
         }
 
 
