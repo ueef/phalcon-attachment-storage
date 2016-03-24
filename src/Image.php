@@ -59,24 +59,26 @@ namespace Phalcon\Extended\Attachment {
                 throw new Exception('Алиас ' . $alias . ' не зарегистрирован');
             }
 
+            list($width, $height, $strict) = $this->thumbnails[$alias];
+
+            $mime = $this->getMimeType();
             $srcPath = $this->getPath();
             $dstPath = $this->getPath($alias);
             $srcInfo = $this->getInfo($srcPath);
 
-            if (!array_key_exists($this->getMimeType(), static::$imagesMimeHandlers)) {
-                throw new Exception('Тип ' . $this->getMimeType() . ' не поддерживается');
+            if (!array_key_exists($mime, static::$imagesMimeHandlers)) {
+                throw new Exception('Тип ' . $mime . ' не поддерживается');
             }
 
-            $image = $this->openImage($srcPath, $this->getMimeType());
+            $image = $this->openImage($srcPath, $mime);
 
             $image = $this->thumbnailImage(
                 $image,
                 $srcInfo['width'], $srcInfo['height'],
-                $this->thumbnails[$alias]['width'], $this->thumbnails[$alias]['height'],
-                $this->thumbnails[$alias]['strict']
+                $width, $height, $strict
             );
 
-            $this->saveImage($image, $dstPath, $this->mime);
+            $this->saveImage($image, $dstPath, $this->getMimeType());
         }
 
 
