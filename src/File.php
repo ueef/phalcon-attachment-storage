@@ -168,7 +168,7 @@ namespace Phalcon\Extended\Attachment {
 
         public function getPath($alias = null)
         {
-            return $this->getDir() . '/' . $this->getFilename($alias = null);
+            return $this->getDir() . '/' . $this->getFilename($alias);
         }
 
 
