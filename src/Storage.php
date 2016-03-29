@@ -16,15 +16,15 @@ namespace Phalcon\Extended\Attachment {
         }
 
 
-        public function getPath($key)
+        public function getPath($key, $suffixDir = null)
         {
-            return $this->makeDir($this->storageDir . $this->getUrl($key));
+            return $this->makeDir($this->storageDir . $this->getUrl($key, $suffixDir));
         }
 
 
-        public function getUrl($key)
+        public function getUrl($key, $suffixDir = null)
         {
-            return $this->prefixDir . $this->buildUrl($key);
+            return $this->prefixDir . $this->buildUrl($key) . $this->correctPath($suffixDir);
         }
 
 
