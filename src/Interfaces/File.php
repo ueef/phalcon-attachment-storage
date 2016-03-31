@@ -62,6 +62,18 @@ namespace Phalcon\Extended\Attachment\Interfaces {
 
 
         /**
+         * @return string
+         */
+        function getDirUrl();
+
+
+        /**
+         * @return string
+         */
+        function getDirPath();
+
+
+        /**
          * @param string $alias
          * @return string
          */
@@ -73,12 +85,6 @@ namespace Phalcon\Extended\Attachment\Interfaces {
          * @return string
          */
         function getPath($alias = null);
-
-
-        /**
-         * @return string
-         */
-        function getDir();
 
 
         /**
