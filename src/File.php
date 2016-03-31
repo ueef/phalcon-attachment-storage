@@ -160,21 +160,27 @@ namespace Phalcon\Extended\Attachment {
         }
 
 
+        public function getDirUrl()
+        {
+            return $this->storage()->getUrl($this->key);
+        }
+
+
+        public function getDirPath()
+        {
+            return $this->storage()->getPath($this->key);
+        }
+
+
         public function getUrl($alias = null)
         {
-            return $this->storage()->getUrl($this->key) . '/' . $this->getFilename($alias);
+            return $this->getDirUrl() . '/' . $this->getFilename($alias);
         }
 
 
         public function getPath($alias = null)
         {
-            return $this->getDir() . '/' . $this->getFilename($alias);
-        }
-
-
-        public function getDir()
-        {
-            return $this->storage()->getPath($this->key);
+            return $this->getDirPath() . '/' . $this->getFilename($alias);
         }
 
 
