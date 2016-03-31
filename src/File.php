@@ -9,32 +9,32 @@ namespace Phalcon\Extended\Attachment {
         /**
          * @var string
          */
-        protected$key = null;
+        protected $key = null;
 
         /**
          * @var string
          */
-        protected$name = null;
+        protected $name = null;
 
         /**
          * @var string
          */
-        protected$extension = null;
+        protected $extension = null;
 
         /**
          * @var string
          */
-        protected$mime_type = null;
+        protected $mime_type = null;
 
         /**
          * @var integer
          */
-        protected$time = null;
+        protected $time = null;
 
         /**
          * @var array
          */
-        protected$aliases = [];
+        protected $aliases = [];
 
 
         public function __construct(array $parameters = [])
