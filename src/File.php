@@ -36,6 +36,11 @@ namespace Phalcon\Extended\Attachment {
          */
         protected $aliases = [];
 
+        /**
+         * @var string
+         */
+        protected $storageService = 'attachment-storage';
+
 
         public function __construct(array $parameters = [])
         {
@@ -235,7 +240,7 @@ namespace Phalcon\Extended\Attachment {
 
         protected function storage()
         {
-            return Di::getDefault()->get('attachment-storage');
+            return Di::getDefault()->get($this->storageService);
         }
 
 
