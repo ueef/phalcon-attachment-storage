@@ -238,6 +238,9 @@ namespace Phalcon\Extended\Attachment {
         }
 
 
+        /**
+         * @return Storage
+         */
         protected function storage()
         {
             return Di::getDefault()->get($this->storageService);
