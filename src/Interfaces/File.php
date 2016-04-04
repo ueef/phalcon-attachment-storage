@@ -112,6 +112,12 @@ namespace Phalcon\Extended\Attachment\Interfaces {
 
 
         /**
+         * @return array
+         */
+        function getAllAliases();
+
+
+        /**
          * @return string
          */
         function getMimeType();

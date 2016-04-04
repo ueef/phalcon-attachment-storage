@@ -57,7 +57,7 @@ namespace Phalcon\Extended\Attachment {
 
             $this->assign($parameters);
 
-            foreach ($moved->getAliases() as $alias) {
+            foreach ($moved->getAllAliases() as $alias) {
                 if (!rename($moved->getPath($alias), $this->getPath($alias))) {
                     throw new File\Exception('Не удалось переместить файл ' . $moved->getPath($alias) . ' в ' . $this->getPath($alias));
                 }
@@ -71,7 +71,7 @@ namespace Phalcon\Extended\Attachment {
 
             $copy->assign($parameters);
 
-            foreach ($this->getAliases() as $alias) {
+            foreach ($this->getAllAliases() as $alias) {
                 if (file_exists($this->getPath($alias)) && !copy($this->getPath($alias), $copy->getPath($alias))) {
                     throw new File\Exception('Не удалось скопировать файл ' . $this->getPath($alias) . ' в ' . $copy->getPath($alias));
                 }
@@ -134,7 +134,7 @@ namespace Phalcon\Extended\Attachment {
 
         public function delete($deleteEmptyDir = true)
         {
-            foreach ($this->getAliases() as $alias) {
+            foreach ($this->getAllAliases() as $alias) {
                 if (file_exists($this->getPath($alias)) && !unlink($alias)) {
                     throw new File\Exception('Не удалось удалить файл ' . $this->getPath($alias));
                 }
@@ -209,7 +209,13 @@ namespace Phalcon\Extended\Attachment {
 
         public function getAliases()
         {
-            return array_merge(null, $this->aliases);
+            return $this->aliases;
+        }
+
+
+        public function getAllAliases()
+        {
+            return array_merge([null], $this->aliases);
         }
 
 
