@@ -135,9 +135,7 @@ namespace Phalcon\Extended\Attachment {
         public function delete($deleteEmptyDir = true)
         {
             foreach ($this->getAllAliases() as $alias) {
-                if (file_exists($this->getPath($alias)) && !unlink($alias)) {
-                    throw new File\Exception('Не удалось удалить файл ' . $this->getPath($alias));
-                }
+                $this->deleteAlias($alias);
             }
 
             /*if ($deleteEmptyDir) {
@@ -148,7 +146,7 @@ namespace Phalcon\Extended\Attachment {
 
         public function deleteAlias($alias)
         {
-            if (file_exists($this->getPath($alias)) && !unlink($alias)) {
+            if (file_exists($this->getPath($alias)) && !unlink($this->getPath($alias))) {
                 throw new File\Exception('Не удалось удалить файл ' . $this->getPath($alias));
             }
         }
