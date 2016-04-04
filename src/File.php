@@ -58,7 +58,7 @@ namespace Phalcon\Extended\Attachment {
             $this->assign($parameters);
 
             foreach ($moved->getAllAliases() as $alias) {
-                if (!rename($moved->getPath($alias), $this->getPath($alias))) {
+                if (file_exists($moved->getPath($alias)) && !rename($moved->getPath($alias), $this->getPath($alias))) {
                     throw new File\Exception('Не удалось переместить файл ' . $moved->getPath($alias) . ' в ' . $this->getPath($alias));
                 }
             }
