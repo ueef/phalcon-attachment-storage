@@ -253,7 +253,7 @@ namespace Phalcon\Extended\Attachment {
 
         protected function createName()
         {
-            return substr(uniqid(), -10);
+            return uniqid();
         }
 
 
